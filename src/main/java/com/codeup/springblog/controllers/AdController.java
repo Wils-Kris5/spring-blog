@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
     @Controller
     public class AdController {
 
-        @GetMapping("/mads")
+        @GetMapping("/ads")
         @ResponseBody
         public String showAds() {
             return "Showing all the ads";
         }
 
-        @GetMapping("/mads/{id}")
+        @GetMapping("/ads/{id}")
         @ResponseBody
         public String showSingleDad(@PathVariable long id) {
-            return "Showing dad: " + id;
+            return "Showing ad: " + id;
         }
 
-        @PostMapping ("/mads")
+        @PostMapping ("/ads")
         @ResponseBody
         public String createAds() {
-            return "Creating ads";
+            return "Creating an ad";
         }
     }
