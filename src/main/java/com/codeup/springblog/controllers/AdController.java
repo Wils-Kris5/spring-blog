@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
         @GetMapping("/ads/{id}")
         @ResponseBody
-        public String showSingleDad(@PathVariable long id) {
+        public String showSingleAd(@PathVariable long id) {
             return "Showing ad: " + id;
         }
 
