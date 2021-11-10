@@ -1,52 +1,73 @@
 package com.codeup.springblog.models;
 
+
 import javax.persistence.*;
 
-    @Entity
-    @Table(name = "posts")
-    public class Post {
-        @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(columnDefinition = "int unsigned", nullable = false)
-  private long id;
+@Entity
+@Table(name = "posts")
+public class Post {
 
-  @Column(columnDefinition = "varchar(200)", nullable = false)
-        private String title;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-  @Column(columnDefinition = "text", nullable = false)
-        private String body;
-//getters and setters for id, title, body
-    public Long getId() {
-            return id;
-        }
+    @Column(nullable = false)
+    private String title;
 
-    public void setId(Long id) {
-            this.id = id;
-        }
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String body;
 
- public Post(String title, String body){
-            this.title = title;
-            this.body = body;
-        }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-        public Post(){
+    public Post() {
+    }
 
-        }
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
 
-        public String getTitle(){
-            return title;
-        }
+    public long getId() {
+        return id;
+    }
 
-    public void setTitle(String title){
-            this.title = title;
-        }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-     public String getBody() {
-            return body;
-        }
+    public String getTitle() {
+        return title;
+    }
 
- public void setBody(String body) {
-            this.body = body;
-   }
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", body='" + body + '\'' +
+                ", user=" + user +
+                '}';
+    }
+}

@@ -7,6 +7,6 @@ public class HomeController {
     @GetMapping("/home")
     @ResponseBody
     public String welcome() {
-        return "home!";
+        return "index";
     }
 }
